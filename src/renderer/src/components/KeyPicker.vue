@@ -38,8 +38,11 @@
     </div>
     <div class="key-chooser">
       <div v-if="category === 'basic'" class="bonus">
-        <div class="key" @click="setKey('KC.NO')">Empty</div>
-        <div class="key" @click="setKey('KC.TRNS')">▽</div>
+
+        <div class="group">
+          <div class="key" @click="setKey('KC.NO')">Empty</div>
+          <div class="key" @click="setKey('KC.TRNS')">▽</div>
+        </div>
 
         <div class="key" @click="setKey('KC.KP_EQUAL')">=</div>
         <div class="key" @click="setKey('KC.KP_COMMA')">,</div>
@@ -149,14 +152,22 @@
     <div v-if="category === 'rgb'" class="key-chooser flex">
       <div class="bonus">
         <div class="key" @click="setKey('KC.RGB_TOG')">RGB Toggle</div>
-        <div class="key" @click="setKey('KC.RGB_HUI')">RGB Hue +</div>
-        <div class="key" @click="setKey('KC.RGB_HUD')">RGB Hue -</div>
-        <div class="key" @click="setKey('KC.RGB_SAI')">RGB Sat +</div>
-        <div class="key" @click="setKey('KC.RGB_SAD')">RGB Sat -</div>
-        <div class="key" @click="setKey('KC.RGB_VAI')">RGB Val +</div>
-        <div class="key" @click="setKey('KC.RGB_VAD')">RGB Val -</div>
-        <div class="key" @click="setKey('KC.RGB_ANI')">RGB Speed +</div>
-        <div class="key" @click="setKey('KC.RGB_AND')">RGB Speed -</div>
+        <div class="group">
+          <div class="key" @click="setKey('KC.RGB_HUI')">RGB Hue +</div>
+          <div class="key" @click="setKey('KC.RGB_HUD')">RGB Hue -</div>
+        </div>
+        <div class="group">
+          <div class="key" @click="setKey('KC.RGB_SAI')">RGB Sat +</div>
+          <div class="key" @click="setKey('KC.RGB_SAD')">RGB Sat -</div>
+        </div>
+        <div class="group">
+          <div class="key" @click="setKey('KC.RGB_VAI')">RGB Val +</div>
+          <div class="key" @click="setKey('KC.RGB_VAD')">RGB Val -</div>
+        </div>
+        <div class="group">
+          <div class="key" @click="setKey('KC.RGB_ANI')">RGB Speed +</div>
+          <div class="key" @click="setKey('KC.RGB_AND')">RGB Speed -</div>
+        </div>
       </div>
     </div>
     <div v-if="category === 'advanced'">
