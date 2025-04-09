@@ -3,8 +3,11 @@ env:
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build-linux:
