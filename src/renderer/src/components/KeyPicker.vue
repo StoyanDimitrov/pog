@@ -131,8 +131,8 @@
       <div class="bonus">
         <div class="key" @click="setKey('KC.MPLY')">Play Pause</div>
         <div class="key" @click="setKey('KC.MUTE')">Mute</div>
-        <div class="key" @click="setKey('KC.VOLU')">Vol ↑</div>
-        <div class="key" @click="setKey('KC.VOLD')">Vol ↓</div>
+        <div class="key" @click="setKey('KC.VOLU')">Vol +</div>
+        <div class="key" @click="setKey('KC.VOLD')">Vol -</div>
         <div class="key" @click="setKey('KC.MFFD')">next track (OSX)</div>
         <div class="key" @click="setKey('KC.MRWD')">prev track (OSX)</div>
 
@@ -149,12 +149,14 @@
     <div v-if="category === 'rgb'" class="key-chooser flex">
       <div class="bonus">
         <div class="key" @click="setKey('KC.RGB_TOG')">RGB Toggle</div>
-        <div class="key" @click="setKey('KC.RGB_HUI')">RGB Hue ↑</div>
-        <div class="key" @click="setKey('KC.RGB_HUD')">RGB Hue ↓</div>
-        <div class="key" @click="setKey('KC.RGB_SAI')">RGB Sat ↑</div>
-        <div class="key" @click="setKey('KC.RGB_SAD')">RGB Sat ↓</div>
-        <div class="key" @click="setKey('KC.RGB_VAI')">RGB Val ↑</div>
-        <div class="key" @click="setKey('KC.RGB_VAD')">RGB Val ↓</div>
+        <div class="key" @click="setKey('KC.RGB_HUI')">RGB Hue +</div>
+        <div class="key" @click="setKey('KC.RGB_HUD')">RGB Hue -</div>
+        <div class="key" @click="setKey('KC.RGB_SAI')">RGB Sat +</div>
+        <div class="key" @click="setKey('KC.RGB_SAD')">RGB Sat -</div>
+        <div class="key" @click="setKey('KC.RGB_VAI')">RGB Val +</div>
+        <div class="key" @click="setKey('KC.RGB_VAD')">RGB Val -</div>
+        <div class="key" @click="setKey('KC.RGB_ANI')">RGB Speed +</div>
+        <div class="key" @click="setKey('KC.RGB_AND')">RGB Speed -</div>
       </div>
     </div>
     <div v-if="category === 'advanced'">
