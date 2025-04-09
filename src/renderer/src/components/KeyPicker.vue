@@ -151,7 +151,9 @@
     </div>
     <div v-if="category === 'rgb'" class="key-chooser flex">
       <div class="bonus">
-        <div class="key" @click="setKey('KC.RGB_TOG')">RGB Toggle</div>
+        <div class="group">
+          <div class="key" @click="setKey('KC.RGB_TOG')">RGB Toggle</div>
+        </div>
         <div class="group">
           <div class="key" @click="setKey('KC.RGB_HUI')">RGB Hue +</div>
           <div class="key" @click="setKey('KC.RGB_HUD')">RGB Hue -</div>
