@@ -295,14 +295,20 @@ export const renderLabel = (keycode: string) => {
     TG: { label: 'TG' },
     TO: { label: 'TO' },
 
-    // Tap dance
-    TD: { label: 'TD' },
-
-    // Hold top
+    // HoldTap
     HT: { label: 'HT' },
+
+    // Tap Dance
+    TD: { label: 'TD' },
 
     // One shot
     OS: { label: 'OS' },
+
+    // Sticky Keys
+    SK: { label: 'SK' },
+
+    // Sticky Mod
+    SM: { label: 'SM' },
 
     // Media
     MPLY: { label: 'Play/Pause', icon: 'mdi-play-pause' },

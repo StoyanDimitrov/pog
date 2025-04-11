@@ -302,7 +302,7 @@ const keyColor = computed(() => {
     if (props.keyData.keyboard.layers[mainLabel.value.layer]) {
       return props.keyData.keyboard.layers[mainLabel.value.layer].color
     }
-  } else if (mainLabel.value && mainLabel.value.action === 'MT') {
+  } else if (mainLabel.value && ['MT', 'OS'].includes(mainLabel.value.action)) {
     return '#592424'
   }
   return undefined
