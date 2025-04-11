@@ -296,7 +296,7 @@ export const renderLabel = (keycode: string) => {
     TO: { label: 'TO' },
 
     // Tap dance
-    TD: { label: 'TD' }
+    TD: { label: 'TD' },
 
     // Hold top
     HT: { label: 'HT' },
