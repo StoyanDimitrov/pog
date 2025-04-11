@@ -81,8 +81,23 @@
             MO({{ index }})
           </div>
         </div>
-        <!--      <div class="key" @click="setKey('KC.LM()')">LM(l, mod)</div>-->
-        <!--      <div class="key" @click="setKey('KC.LT()')">LT(l, kc)</div>-->
+        <div class="group">
+          <div
+            v-for="(_layer, index) in keyboardStore.keymap"
+            class="key"
+            @click="setKey('KC.LM(${index})')"
+          >
+            LM({{ index }}, mod)
+          </div>
+
+          <div
+            v-for="(_layer, index) in keyboardStore.keymap"
+            class="key"
+            @click="setKey('KC.LT(${index})')"
+          >
+            LT({{ index }}, kc)
+          </div>
+        </div>
         <div class="group">
           <div
             v-for="(_layer, index) in keyboardStore.keymap"

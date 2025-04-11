@@ -289,11 +289,11 @@ export const renderLabel = (keycode: string) => {
     // Layer
     MO: { label: 'MO' },
     MT: { label: 'MT' },
+    LM: { label: 'LM' },
     LT: { label: 'LT' },
     TT: { label: 'TT' },
     TG: { label: 'TG' },
     TO: { label: 'TO' },
-    TD: { label: 'TD' },
 
     HT: { label: 'HT' },
     OS: { label: 'OS' },
@@ -308,7 +308,6 @@ export const renderLabel = (keycode: string) => {
     send_string: { label: 'String' },
     RESET: { label: 'Reset' },
     RELOAD: { label: 'Reload' },
-    DEBUG: { label: 'Debug' },
     RGB_TOG: { label: 'Toggle<br/>RGB' },
     RGB_HUI: { label: 'RGB<br/>Hue +' },
     RGB_HUD: { label: 'RGB<br/>Hue -' },
