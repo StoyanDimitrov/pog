@@ -85,15 +85,16 @@
           <div
             v-for="(_layer, index) in keyboardStore.keymap"
             class="key"
-            @click="setKey('KC.LM(${index})')"
+            @click="setKey(`KC.LM(${index},KC.LGUI)`)"
           >
             LM({{ index }}, mod)
           </div>
-
+        </div>
+        <div class="group">
           <div
             v-for="(_layer, index) in keyboardStore.keymap"
             class="key"
-            @click="setKey('KC.LT(${index})')"
+            @click="setKey('KC.LT(${index},KC.A)')"
           >
             LT({{ index }}, kc)
           </div>
@@ -123,15 +124,6 @@
             @click="setKey(`KC.TT(${index})`)"
           >
             TT({{ index }})
-          </div>
-        </div>
-        <div class="group">
-          <div
-            v-for="(_layer, index) in keyboardStore.keymap"
-            class="key"
-            @click="setKey(`KC.LM(${index},KC.LGUI)`)"
-          >
-            LM({{ index }}, mod)
           </div>
         </div>
       </div>
