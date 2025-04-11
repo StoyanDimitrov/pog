@@ -135,6 +135,9 @@
         <div class="key" @click="setKey('KC.RESET')">Reset</div>
         <div class="key" @click="setKey('KC.RELOAD')">Reload</div>
         <div class="key" @click="setKey('KC.BKDL')">BKDL</div>
+        <div class="group">
+          <div class="key" @click="setKey('KC.HT(KC.A, KC.LCTL)')">HoldTap</div>
+        </div>
       </div>
     </div>
     <div v-if="category === 'app'" class="key-chooser flex">

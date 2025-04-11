@@ -295,7 +295,13 @@ export const renderLabel = (keycode: string) => {
     TG: { label: 'TG' },
     TO: { label: 'TO' },
 
+    // Tap dance
+    TD: { label: 'TD' }
+
+    // Hold top
     HT: { label: 'HT' },
+
+    // One shot
     OS: { label: 'OS' },
 
     // Media
@@ -382,18 +388,11 @@ export const renderLabel = (keycode: string) => {
         if (match && match[1]) {
           const params = match[1].split(',').map((a) => renderLabel(a))
           let maxParams = 10
-          if (['LT', 'MT'].includes(key)) {
+          if (['LT', 'LM', 'MT'].includes(key)) {
             // keycodes that have a label at the top
             maxParams = 2
           }
           switch (key) {
-            case 'LT':
-              keylabel.main = String(params[1].action)
-              keylabel.lower = params[0].action
-              keylabel.layer = Number(params[0].action)
-              keylabel.simple = false
-              keylabel.layerNamePosition = 'lower'
-              break
             case 'OS':
               keylabel.main = String(params[0].action)
               keylabel.simple = false
@@ -403,28 +402,9 @@ export const renderLabel = (keycode: string) => {
               keylabel.simple = false
               break
             case 'MT':
-              keylabel.main = String(params[0].action)
-              keylabel.lower = String(params[1].action)
-              keylabel.simple = false
-              break
             case 'HT':
               keylabel.main = String(params[0].action)
               keylabel.lower = String(params[1].action)
-              keylabel.simple = false
-              break
-            case 'TT':
-              keylabel.main = String(params[0].action)
-              keylabel.layer = Number(params[0].action)
-              keylabel.simple = false
-              break
-            case 'TO':
-              keylabel.main = String(params[0].action)
-              keylabel.layer = Number(params[0].action)
-              keylabel.simple = false
-              break
-            case 'TG':
-              keylabel.main = String(params[0].action)
-              keylabel.layer = Number(params[0].action)
               keylabel.simple = false
               break
             case 'MO':
@@ -432,6 +412,21 @@ export const renderLabel = (keycode: string) => {
               keylabel.layer = Number(params[0].action)
               keylabel.simple = false
               keylabel.layerNamePosition = 'main'
+              break
+            case 'LM':
+            case 'LT':
+              keylabel.main = String(params[1].action)
+              keylabel.lower = params[0].action
+              keylabel.layer = Number(params[0].action)
+              keylabel.simple = false
+              keylabel.layerNamePosition = 'lower'
+              break
+            case 'TG':
+            case 'TO':
+            case 'TT':
+              keylabel.main = String(params[0].action)
+              keylabel.layer = Number(params[0].action)
+              keylabel.simple = false
               break
           }
           keylabel.params = params.slice(0, maxParams)
