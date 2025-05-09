@@ -17,6 +17,8 @@ try:
 except OSError as e:
     microcontroller.nvm[0] = 1
     raise Exception("Could not read pog.json file. mounting drive")
+del configbuffer
+del configbufferlen
 
 print("starting keyboard %s (%s)" % (config["name"], config["id"]))
 
