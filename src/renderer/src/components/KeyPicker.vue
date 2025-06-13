@@ -165,7 +165,9 @@
           <div class="key" @click="setKey('KC.BRIU')">Bright +</div>
           <div class="key" @click="setKey('KC.BRID')">Bright -</div>
         </div>
+      </div>
 
+      <div class="bonus">
         <div class="group">
           <div class="key" @click="setKey('KC.MB_LMB')">Left mouse button</div>
           <div class="key" @click="setKey('KC.MB_RMB')">Right mouse button</div>
