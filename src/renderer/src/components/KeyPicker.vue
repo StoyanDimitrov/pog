@@ -215,13 +215,13 @@
       </div>
     </div>
     <div v-if="category === 'advanced'">
-      <p>you can build way more advanced things with custom keys here are some resources, for some you might need to edit the kb.py file or enable a keyboard feature. when testing these check the output of the REPL for errors
+      <p>You can build way more advanced things with custom keys. Here are some resources you may use. For some of themy you might need to edit the kb.py file or enable a keyboard feature. When testing these check the output of the REPL for errors.
       </p>
       <ul>
         <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/macros.md">Macros</a> KC.MACRO("send a string")</li>
         <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/keycodes.md">Keycodes</a> List of all keys</li>
         <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/layers.md">Layers</a> How layers work</li>
-        <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/combos.md">Combos</a> Multiple keys pressed at simultaneously output a different key</li>
+        <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/combos.md">Combos</a> Multiple keys pressed simultaneously output a different key</li>
         <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/holdtap.md">Holdtap</a> Holding a key down for longer than a certain amount of time outputs a different key</li>
         <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/combo_layers.md">Combo Layers</a> pressing 2 layer keys at once opens a different layer</li>
       </ul>
