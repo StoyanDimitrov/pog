@@ -322,11 +322,11 @@ export const renderLabel = (keycode: string) => {
     MFFD: { label: 'Next Track', icon: 'mdi-skip-next' },
     MNXT: { label: 'Next Track', icon: 'mdi-skip-next' },
 
-    MB_LMB: { label: 'MB Left' },
-    MB_RMB: { label: 'MB Right' },
-    MB_MMB: { label: 'MB Middle' },
-    MB_BTN4: { label: 'MB 4' },
-    MB_BTN5: { label: 'MB 5' },
+    MB_LMB: { label: 'MB<br/>Left' },
+    MB_RMB: { label: 'MB<br/>Right' },
+    MB_MMB: { label: 'MB<br/>Middle' },
+    MB_BTN4: { label: 'MB<br/>4' },
+    MB_BTN5: { label: 'MB<br/>5' },
 
     send_string: { label: 'String' },
     RESET: { label: 'Reset' },
