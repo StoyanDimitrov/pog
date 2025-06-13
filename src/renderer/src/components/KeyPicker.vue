@@ -150,14 +150,14 @@
         </div>
 
         <div class="group">
-          <div class="key" @click="setKey('KC.MFFD')">Next track (OSX)</div>
           <div class="key" @click="setKey('KC.MRWD')">Prev track (OSX)</div>
+          <div class="key" @click="setKey('KC.MFFD')">Next track (OSX)</div>
           <div class="key" @click="setKey('KC.EJCT')">Eject (OSX)</div>
         </div>
 
         <div class="group">
-          <div class="key" @click="setKey('KC.MNXT')">Next track (Win)</div>
           <div class="key" @click="setKey('KC.MPRV')">Prev track (Win)</div>
+          <div class="key" @click="setKey('KC.MNXT')">Next track (Win)</div>
           <div class="key" @click="setKey('KC.MSTP')">Stop track (Win)</div>
         </div>
 
