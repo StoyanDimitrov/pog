@@ -143,7 +143,7 @@
     <div v-if="category === 'app'" class="key-chooser flex">
       <div class="bonus">
         <div class="group">
-          <div class="key" @click="setKey('KC.MPLY')">Play/pause</div>
+          <div class="key" @click="setKey('KC.MPLY')">Play Pause</div>
           <div class="key" @click="setKey('KC.MUTE')">Mute</div>
           <div class="key" @click="setKey('KC.VOLU')">Vol +</div>
           <div class="key" @click="setKey('KC.VOLD')">Vol -</div>
@@ -174,10 +174,16 @@
           <div class="key" @click="setKey('KC.MB_MMB')">Middle mouse button</div>
           <div class="key" @click="setKey('KC.MB_BTN4')">Mouse button 4</div>
           <div class="key" @click="setKey('KC.MB_BTN5')">Mouse button 5</div>
+        </div>
+
+        <div class="group">
           <div class="key" @click="setKey('KC.MW_UP')">Mouse wheel ↑</div>
           <div class="key" @click="setKey('KC.MW_DOWN')">Mouse wheel ↓</div>
           <div class="key" @click="setKey('KC.MW_LEFT')">Mouse pan ←</div>
           <div class="key" @click="setKey('KC.MW_RIGHT')">Mouse pan →</div>
+        </div>
+
+        <div class="group">
           <div class="key" @click="setKey('KC.MS_UP')">Mouse pointer ↑</div>
           <div class="key" @click="setKey('KC.MS_DOWN')">Mouse pointer ↓</div>
           <div class="key" @click="setKey('KC.MS_LEFT')">Mouse pointer ←</div>
