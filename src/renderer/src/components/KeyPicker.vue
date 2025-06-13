@@ -142,21 +142,45 @@
     </div>
     <div v-if="category === 'app'" class="key-chooser flex">
       <div class="bonus">
-        <div class="key" @click="setKey('KC.MPLY')">Play Pause</div>
-        <div class="key" @click="setKey('KC.MUTE')">Mute</div>
-        <div class="key" @click="setKey('KC.VOLU')">Vol +</div>
-        <div class="key" @click="setKey('KC.VOLD')">Vol -</div>
-        <div class="key" @click="setKey('KC.MFFD')">next track (OSX)</div>
-        <div class="key" @click="setKey('KC.MRWD')">prev track (OSX)</div>
+        <div class="group">
+          <div class="key" @click="setKey('KC.MPLY')">Play/pause</div>
+          <div class="key" @click="setKey('KC.MUTE')">Mute</div>
+          <div class="key" @click="setKey('KC.VOLU')">Vol +</div>
+          <div class="key" @click="setKey('KC.VOLD')">Vol -</div>
+        </div>
 
-        <div class="key" @click="setKey('KC.MNXT')">next track (win)</div>
-        <div class="key" @click="setKey('KC.MPRV')">prev track (win)</div>
-        <div class="key" @click="setKey('KC.MSTP')">stop track (win)</div>
+        <div class="group">
+          <div class="key" @click="setKey('KC.MFFD')">Next track (OSX)</div>
+          <div class="key" @click="setKey('KC.MRWD')">Prev track (OSX)</div>
+          <div class="key" @click="setKey('KC.EJCT')">Eject (OSX)</div>
+        </div>
 
-        <div class="key" @click="setKey('KC.BRIU')">bright up</div>
-        <div class="key" @click="setKey('KC.BRID')">bright down</div>
+        <div class="group">
+          <div class="key" @click="setKey('KC.MNXT')">Next track (Win)</div>
+          <div class="key" @click="setKey('KC.MPRV')">Prev track (Win)</div>
+          <div class="key" @click="setKey('KC.MSTP')">Stop track (Win)</div>
+        </div>
 
-        <div class="key" @click="setKey('KC.EJCT')">eject (OSX)</div>
+        <div class="group">
+          <div class="key" @click="setKey('KC.BRIU')">Bright +</div>
+          <div class="key" @click="setKey('KC.BRID')">Bright -</div>
+        </div>
+
+        <div class="group">
+          <div class="key" @click="setKey('KC.MB_LMB')">Left mouse button</div>
+          <div class="key" @click="setKey('KC.MB_RMB')">Right mouse button</div>
+          <div class="key" @click="setKey('KC.MB_MMB')">Middle mouse button</div>
+          <div class="key" @click="setKey('KC.MB_BTN4')">Mouse button 4</div>
+          <div class="key" @click="setKey('KC.MB_BTN5')">Mouse button 5</div>
+          <div class="key" @click="setKey('KC.MW_UP')">Mouse wheel ↑</div>
+          <div class="key" @click="setKey('KC.MW_DOWN')">Mouse wheel ↓</div>
+          <div class="key" @click="setKey('KC.MW_LEFT')">Mouse pan ←</div>
+          <div class="key" @click="setKey('KC.MW_RIGHT')">Mouse pan →</div>
+          <div class="key" @click="setKey('KC.MS_UP')">Move mouse pointer ↑</div>
+          <div class="key" @click="setKey('KC.MS_DOWN')">Move mouse pointer ↓</div>
+          <div class="key" @click="setKey('KC.MS_LEFT')">Move mouse pointer ←</div>
+          <div class="key" @click="setKey('KC.MS_RIGHT')">Move mouse pointer →</div>
+        </div>
       </div>
     </div>
     <div v-if="category === 'rgb'" class="key-chooser flex">
