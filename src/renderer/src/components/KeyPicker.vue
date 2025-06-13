@@ -176,10 +176,10 @@
           <div class="key" @click="setKey('KC.MW_DOWN')">Mouse wheel ↓</div>
           <div class="key" @click="setKey('KC.MW_LEFT')">Mouse pan ←</div>
           <div class="key" @click="setKey('KC.MW_RIGHT')">Mouse pan →</div>
-          <div class="key" @click="setKey('KC.MS_UP')">Move mouse pointer ↑</div>
-          <div class="key" @click="setKey('KC.MS_DOWN')">Move mouse pointer ↓</div>
-          <div class="key" @click="setKey('KC.MS_LEFT')">Move mouse pointer ←</div>
-          <div class="key" @click="setKey('KC.MS_RIGHT')">Move mouse pointer →</div>
+          <div class="key" @click="setKey('KC.MS_UP')">Mouse pointer ↑</div>
+          <div class="key" @click="setKey('KC.MS_DOWN')">Mouse pointer ↓</div>
+          <div class="key" @click="setKey('KC.MS_LEFT')">Mouse pointer ←</div>
+          <div class="key" @click="setKey('KC.MS_RIGHT')">Mouse pointer →</div>
         </div>
       </div>
     </div>
