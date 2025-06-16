@@ -325,7 +325,7 @@ export const renderLabel = (keycode: string) => {
     MPRV: { label: 'Prev Track', icon: 'mdi-skip-previous' },
     MFFD: { label: 'Next Track', icon: 'mdi-skip-next' },
     MNXT: { label: 'Next Track', icon: 'mdi-skip-next' },
-    MEJCT: { label: 'Eject', icon: 'mdi-eject' },
+    EJCT: { label: 'Eject', icon: 'mdi-eject' },
 
     MB_LMB: { label: 'MB<br/>Left' },
     MB_RMB: { label: 'MB<br/>Right' },
