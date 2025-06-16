@@ -314,7 +314,7 @@ export const renderLabel = (keycode: string) => {
     MPLY: { label: 'Play/Pause', icon: 'mdi-play-pause' },
     VOLU: { label: 'Vol up', icon: 'mdi-volume-plus' },
     VOLD: { label: 'Vol down', icon: 'mdi-volume-minus' },
-    MUTE: { label: 'Mute', icon: 'mdi-volume-mute' },
+    MUTE: { label: 'Mute', icon: 'mdi-volume-off' },
     MEDIA_PLAY_PAUSE: { label: 'Play/Pause', icon: 'mdi-play-pause' },
     MSTP: { label: 'Stop', icon: 'mdi-stop' },
     MRWD: { label: 'Prev Track', icon: 'mdi-skip-previous' },
@@ -327,6 +327,16 @@ export const renderLabel = (keycode: string) => {
     MB_MMB: { label: 'MB<br/>Middle' },
     MB_BTN4: { label: 'MB<br/>4' },
     MB_BTN5: { label: 'MB<br/>5' },
+
+    MW_UP: { label: 'Wheel ↑' },
+    MW_DOWN: { label: 'Wheel ↓' },
+    MW_LEFT: { label: 'Wheel ←' },
+    MW_RIGHT: { label: 'Wheel →' },
+
+    MS_UP: { label: 'Cursor ↑' },
+    MS_DOWN: { label: 'Cursor ↓' },
+    MS_LEFT: { label: 'Cursor ←' },
+    MS_RIGHT: { label: 'Cursor →' },
 
     send_string: { label: 'String' },
     RESET: { label: 'Reset' },
