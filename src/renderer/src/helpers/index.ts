@@ -310,17 +310,22 @@ export const renderLabel = (keycode: string) => {
     // Sticky Mod
     SM: { label: 'SM' },
 
+    // Brightness
+    BRIU: { label: 'Play/Pause', icon: 'mdi-brightness-5' },
+    BRID: { label: 'Play/Pause', icon: 'mdi-brightness-4' },
+
     // Media
     MPLY: { label: 'Play/Pause', icon: 'mdi-play-pause' },
-    VOLU: { label: 'Vol up', icon: 'mdi-volume-plus' },
-    VOLD: { label: 'Vol down', icon: 'mdi-volume-minus' },
-    MUTE: { label: 'Mute', icon: 'mdi-volume-off' },
+    VOLU: { label: 'Vol up', icon: 'mdi-volume-high' },
+    VOLD: { label: 'Vol down', icon: 'mdi-volume-low' },
+    MUTE: { label: 'Mute', icon: 'mdi-volume-variant-off' },
     MEDIA_PLAY_PAUSE: { label: 'Play/Pause', icon: 'mdi-play-pause' },
     MSTP: { label: 'Stop', icon: 'mdi-stop' },
     MRWD: { label: 'Prev Track', icon: 'mdi-skip-previous' },
     MPRV: { label: 'Prev Track', icon: 'mdi-skip-previous' },
     MFFD: { label: 'Next Track', icon: 'mdi-skip-next' },
     MNXT: { label: 'Next Track', icon: 'mdi-skip-next' },
+    MEJCT: { label: 'Eject', icon: 'mdi-eject' },
 
     MB_LMB: { label: 'MB<br/>Left' },
     MB_RMB: { label: 'MB<br/>Right' },
