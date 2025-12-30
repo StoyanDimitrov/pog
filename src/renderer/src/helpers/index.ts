@@ -287,28 +287,31 @@ export const renderLabel = (keycode: string) => {
     ASTERISK: { label: '*' },
 
     // Layer
-    MO: { label: 'MO' },
-    MT: { label: 'MT' },
-    LM: { label: 'LM' },
-    LT: { label: 'LT' },
-    TT: { label: 'TT' },
-    TG: { label: 'TG' },
-    TO: { label: 'TO' },
+    MO: { label: 'MO' }, // Momentarily activates layer
+    LM: { label: 'LM' }, // Momentarily activates layer with active modifier
+    LT: { label: 'LT' }, // Momentarily activates layer if held, sends KC if tapped
+    TG: { label: 'TG' }, // Toggles layer
+    TO: { label: 'TO' }, // Activates layer and deactivates all other layers
+    TT: { label: 'TT' }, // Momentarily activates layer if held, toggles it if tapped repeatedly
+
 
     // HoldTap
     HT: { label: 'HT' },
+    // Modtap (deprecated by HoldTap)
+
+    MT: { label: 'MT' },
 
     // Tap Dance
     TD: { label: 'TD' },
-
-    // One shot
-    OS: { label: 'OS' },
 
     // Sticky Keys
     SK: { label: 'SK' },
 
     // Sticky Mod
     SM: { label: 'SM' },
+
+    // One shot (deprecated by Sticky Keys/Mod)
+    OS: { label: 'OS' },
 
     // Brightness
     BRIU: { label: 'Brightness +', icon: 'mdi-brightness-5' },

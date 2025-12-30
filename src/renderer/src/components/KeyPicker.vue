@@ -74,17 +74,20 @@
       <div class="bonus">
         <div class="group">
           <div
-            v-for="(_layer, index) in keyboardStore.keymap"
             class="key"
+            v-for="(_layer, index) in keyboardStore.keymap"
+            :title="`Momentarily activates layer ${index}`"
             @click="setKey(`KC.MO(${index})`)"
           >
             MO({{ index }})
           </div>
         </div>
+
         <div class="group">
           <div
-            v-for="(_layer, index) in keyboardStore.keymap"
             class="key"
+            v-for="(_layer, index) in keyboardStore.keymap"
+            :title="`Momentarily activates layer ${index} with active modifier`"
             @click="setKey(`KC.LM(${index},KC.LGUI)`)"
           >
             LM({{ index }}, mod)
@@ -92,17 +95,19 @@
         </div>
         <div class="group">
           <div
-            v-for="(_layer, index) in keyboardStore.keymap"
             class="key"
-            @click="setKey('KC.LT(${index},KC.A)')"
+            v-for="(_layer, index) in keyboardStore.keymap"
+            :title="`Momentarily activates layer ${index} if held, sends key if tapped`"
+            @click="setKey(`KC.LT(${index},KC.A)`)"
           >
             LT({{ index }}, kc)
           </div>
         </div>
         <div class="group">
           <div
-            v-for="(_layer, index) in keyboardStore.keymap"
             class="key"
+            v-for="(_layer, index) in keyboardStore.keymap"
+            :title="`Toggles layer ${index}`"
             @click="setKey(`KC.TG(${index})`)"
           >
             TG({{ index }})
@@ -110,8 +115,9 @@
         </div>
         <div class="group">
           <div
-            v-for="(_layer, index) in keyboardStore.keymap"
             class="key"
+            v-for="(_layer, index) in keyboardStore.keymap"
+            :title="`Activates layer ${index} and deactivates all other layers`"
             @click="setKey(`KC.TO(${index})`)"
           >
             TO({{ index }})
@@ -119,8 +125,9 @@
         </div>
         <div class="group">
           <div
-            v-for="(_layer, index) in keyboardStore.keymap"
             class="key"
+            v-for="(_layer, index) in keyboardStore.keymap"
+            :title="`Momentarily activates layer ${index} if held, toggles it if tapped repeatedly`"
             @click="setKey(`KC.TT(${index})`)"
           >
             TT({{ index }})
@@ -215,7 +222,7 @@
       </div>
     </div>
     <div v-if="category === 'advanced'">
-      <p>You can build much more advanced behavior with custom keys. Here are some resources you can use. Some may require editing `kb.py` or enabling specific keyboard features. When testing, check the REPL output for errors.
+      <p>You can build much more advanced behavior with custom keys. Here are some resources you can use. Some may require editing kb.py or enabling specific keyboard features. When testing, check the REPL output for errors.
       </p>
       <ul>
         <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/macros.md">Macros</a> KC.MACRO("send a string")</li>
