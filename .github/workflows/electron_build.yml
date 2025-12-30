@@ -1,13 +1,11 @@
 name: Build Electron App
 env:
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
 on: push
 
 jobs:
   build-windows:
     runs-on: windows-latest
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v2

@@ -25,7 +25,7 @@
     </div>
     <div class="mt-4 flex items-center">
       <div class="flex gap-2">
-        <KeymapLayer v-for="(layer, index) in keyboardStore.keymap" :layer="layer" :index="index" />
+        <KeymapLayer v-for="(layer, index) in keyboardStore.keymap" :key="index" :layer="layer" :index="index" />
       </div>
     </div>
   </div>
@@ -44,19 +44,6 @@
       <span class="text-sm text-warning">{{ coordMapWarning }}</span>
     </p>
     <div class="flex gap-2">
-      <select
-        v-model="keycodeModeForSelection"
-        class="select select-bordered select-sm"
-        @change="switchedKeyCodeType"
-      >
-        <!-- simple will just inline the keycode -->
-        <option value="simple">Simple</option>
-        <!-- other options will create a separately linked keycode -->
-        <option value="string">String</option>
-        <option value="macro">Macro</option>
-        <option value="tapdance">Tap Dance</option>
-        <option value="custom">Custom</option>
-      </select>
       <div class="flex-grow">
         <input
           v-model="currentKeyCode"
@@ -64,6 +51,85 @@
           type="text"
           class="input input-bordered input-sm w-full"
         />
+      </div>
+      <button v-if="selectedKeys.size > 0" class="btn btn-primary btn-sm" @click="openMacroModal">
+        Custom Macro
+      </button>
+      <!-- Templates Dropdown with Floating UI -->
+      <div v-if="selectedKeys.size > 0" class="relative">
+        <button ref="templatesButtonRef" class="btn btn-sm" @click="toggleTemplatesDropdown">
+          <i class="mdi mdi-file-document-outline mr-1"></i>Templates
+          <i class="mdi mdi-chevron-down ml-1"></i>
+        </button>
+        <Teleport to="body">
+          <div
+            v-if="templatesDropdownOpen"
+            class="fixed inset-0 z-40"
+            @click="closeTemplatesDropdown"
+          ></div>
+          <ul
+            v-if="templatesDropdownOpen"
+            ref="templatesDropdownRef"
+            :style="floatingStyles"
+            class="menu rounded-box z-50 w-52 bg-base-300 p-2 shadow-lg"
+          >
+            <li class="menu-title"><span>Insert Template</span></li>
+            <li>
+              <a @click="insertTemplate('macro'), closeTemplatesDropdown()"
+                ><i class="mdi mdi-keyboard"></i> Macro</a
+              >
+            </li>
+            <li>
+              <a @click="insertTemplate('string'), closeTemplatesDropdown()"
+                ><i class="mdi mdi-format-text"></i> String</a
+              >
+            </li>
+            <li>
+              <a @click="insertTemplate('tapdance'), closeTemplatesDropdown()"
+                ><i class="mdi mdi-gesture-double-tap"></i> Tap Dance</a
+              >
+            </li>
+            <li>
+              <a @click="insertTemplate('custom'), closeTemplatesDropdown()"
+                ><i class="mdi mdi-cog"></i> Custom Key</a
+              >
+            </li>
+            <li class="my-1 h-px bg-base-content/20"></li>
+            <li class="menu-title"><span>Documentation</span></li>
+            <li>
+              <a
+                href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/macros.md"
+                target="_blank"
+              >
+                <i class="mdi mdi-open-in-new"></i> Macros Guide
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/tapdance.md"
+                target="_blank"
+              >
+                <i class="mdi mdi-open-in-new"></i> Tap Dance Guide
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/keycodes.md"
+                target="_blank"
+              >
+                <i class="mdi mdi-open-in-new"></i> Keycodes Reference
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/layers.md"
+                target="_blank"
+              >
+                <i class="mdi mdi-open-in-new"></i> Layers Guide
+              </a>
+            </li>
+          </ul>
+        </Teleport>
       </div>
     </div>
     <div v-if="keycodeModeForSelection === 'custom'" class="p-2 text-sm italic">
@@ -73,22 +139,42 @@
       </p>
     </div>
   </div>
-  <KeyPicker @setKey="setKey"></KeyPicker>
+  <KeyPicker :show-secondary="true" @set-key="setKey"></KeyPicker>
+
+  <!-- Macro Modal -->
+  <MacroModal
+    :is-open="macroModal.isOpen"
+    :initial-macro-code="macroModal.initialCode"
+    @close="closeMacroModal"
+    @apply="applyMacroCode"
+  />
 </template>
 
 <script lang="ts" setup>
 import { keyboardStore, selectedKeys, selectedLayer, userSettings } from '../store'
 import KeyboardLayout from './KeyboardLayout.vue'
 import KeyPicker from './KeyPicker.vue'
+import MacroModal from './MacroModal.vue'
 import { cleanupKeymap, selectNextKey } from '../helpers'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import KeymapLayer from './KeymapLayer.vue'
+import { useFloating, offset, flip, shift, autoUpdate } from '@floating-ui/vue'
 
 selectedKeys.value.clear()
 
-const keycodeModeForSelection = ref<
-  'simple' | 'combo' | 'macro' | 'custom' | 'tapdance' | 'string'
->('simple')
+type KeycodeMode = 'simple' | 'combo' | 'macro' | 'custom' | 'tapdance' | 'string'
+
+const keycodeModeForSelection = ref<KeycodeMode>('simple')
+
+const detectKeycodeType = (keycode: string): KeycodeMode => {
+  if (!keycode || keycode === 'No key selected' || keycode === '▽') return 'simple'
+  if (keycode.includes('KC.MACRO("') || keycode.includes("KC.MACRO('")) return 'string'
+  if (keycode.includes('KC.MACRO(')) return 'macro'
+  if (keycode.includes('KC.TD(')) return 'tapdance'
+  if (keycode.includes('customkeys.')) return 'custom'
+  if (keycode.includes('KC.COMBO(')) return 'combo'
+  return 'simple'
+}
 const setKey = (keyCode: string) => {
   selectedKeys.value.forEach((index) => {
     keyboardStore.keys[index].setOnKeymap(keyCode)
@@ -153,17 +239,16 @@ const currentKeyCode = computed({
     })
   }
 })
-const switchedKeyCodeType = () => {
-  console.log(keycodeModeForSelection.value)
+const insertTemplate = (templateType: KeycodeMode) => {
   const keys = keyboardStore.keys.filter((_k, index) => selectedKeys.value.has(index))
   keys.forEach((key) => {
-    if (keycodeModeForSelection.value === 'macro') {
+    if (templateType === 'macro') {
       key.setOnKeymap('KC.MACRO(Press(KC.LCTL),Tap(KC.A),Release(KC.LCTL))')
-    } else if (keycodeModeForSelection.value === 'string') {
+    } else if (templateType === 'string') {
       key.setOnKeymap('KC.MACRO("Sample string")')
-    } else if (keycodeModeForSelection.value === 'tapdance') {
+    } else if (templateType === 'tapdance') {
       key.setOnKeymap('KC.TD(KC.A,KC.B)')
-    } else if (keycodeModeForSelection.value === 'custom') {
+    } else if (templateType === 'custom') {
       key.setOnKeymap('customkeys.MyKey')
     }
   })
@@ -171,6 +256,43 @@ const switchedKeyCodeType = () => {
 const settingsOpen = ref(false)
 const toggleSettings = () => {
   settingsOpen.value = !settingsOpen.value
+}
+
+// Floating UI for Templates dropdown
+const templatesButtonRef = ref<HTMLElement | null>(null)
+const templatesDropdownRef = ref<HTMLElement | null>(null)
+const templatesDropdownOpen = ref(false)
+
+const { floatingStyles } = useFloating(templatesButtonRef, templatesDropdownRef, {
+  placement: 'bottom-end',
+  middleware: [offset(4), flip(), shift({ padding: 8 })],
+  whileElementsMounted: autoUpdate
+})
+
+const toggleTemplatesDropdown = () => {
+  templatesDropdownOpen.value = !templatesDropdownOpen.value
+}
+
+const closeTemplatesDropdown = () => {
+  templatesDropdownOpen.value = false
+}
+
+const macroModal = ref({
+  isOpen: false,
+  initialCode: ''
+})
+
+const openMacroModal = () => {
+  macroModal.value = { isOpen: true, initialCode: currentKeyCode.value }
+}
+
+const closeMacroModal = () => {
+  macroModal.value.isOpen = false
+}
+
+const applyMacroCode = (macroCode: string) => {
+  currentKeyCode.value = macroCode
+  closeMacroModal()
 }
 
 const coordMapWarning = computed(() => {
@@ -183,4 +305,15 @@ const coordMapWarning = computed(() => {
   }
   return ''
 })
+
+watch(
+  () => currentKeyCode.value,
+  (newKeyCode) => {
+    if (newKeyCode && newKeyCode !== 'No key selected') {
+      const detectedType = detectKeycodeType(newKeyCode)
+      keycodeModeForSelection.value = detectedType
+    }
+  },
+  { immediate: true }
+)
 </script>

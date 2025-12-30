@@ -19,7 +19,7 @@
     <ColemakDH v-if="layout === 'colemak-dh'" @key="setKey" />
     <Dvorak v-if="layout === 'dvorak'" @key="setKey" />
   </div>
-  <div class="secondary mb-4">
+  <div v-show="showSecondary" class="secondary mb-4">
     <div class="tabs tabs-boxed mt-4">
       <a class="tab" :class="{ 'tab-active': category === 'basic' }" @click="category = 'basic'"
         >Basic</a
@@ -145,14 +145,14 @@
         <div class="group">
           <div class="key" @click="setKey('KC.MPLY')">Play Pause</div>
           <div class="key" @click="setKey('KC.MUTE')">Mute</div>
-          <div class="key" @click="setKey('KC.VOLU')">Vol +</div>
           <div class="key" @click="setKey('KC.VOLD')">Vol -</div>
+          <div class="key" @click="setKey('KC.VOLU')">Vol +</div>
         </div>
 
         <div class="group">
-          <div class="key" @click="setKey('KC.MRWD')">Prev track (OSX)</div>
-          <div class="key" @click="setKey('KC.MFFD')">Next track (OSX)</div>
-          <div class="key" @click="setKey('KC.EJCT')">Eject (OSX)</div>
+          <div class="key" @click="setKey('KC.MRWD')">Prev track (macOS)</div>
+          <div class="key" @click="setKey('KC.MFFD')">Next track (macOS)</div>
+          <div class="key" @click="setKey('KC.EJCT')">Eject (macOS)</div>
         </div>
 
         <div class="group">
@@ -197,40 +197,40 @@
           <div class="key" @click="setKey('KC.RGB_TOG')">RGB Toggle</div>
         </div>
         <div class="group">
-          <div class="key" @click="setKey('KC.RGB_HUI')">RGB Hue +</div>
           <div class="key" @click="setKey('KC.RGB_HUD')">RGB Hue -</div>
+          <div class="key" @click="setKey('KC.RGB_HUI')">RGB Hue +</div>
         </div>
         <div class="group">
-          <div class="key" @click="setKey('KC.RGB_SAI')">RGB Sat +</div>
           <div class="key" @click="setKey('KC.RGB_SAD')">RGB Sat -</div>
+          <div class="key" @click="setKey('KC.RGB_SAI')">RGB Sat +</div>
         </div>
         <div class="group">
-          <div class="key" @click="setKey('KC.RGB_VAI')">RGB Val +</div>
           <div class="key" @click="setKey('KC.RGB_VAD')">RGB Val -</div>
+          <div class="key" @click="setKey('KC.RGB_VAI')">RGB Val +</div>
         </div>
         <div class="group">
-          <div class="key" @click="setKey('KC.RGB_ANI')">RGB Speed +</div>
           <div class="key" @click="setKey('KC.RGB_AND')">RGB Speed -</div>
+          <div class="key" @click="setKey('KC.RGB_ANI')">RGB Speed +</div>
         </div>
       </div>
     </div>
     <div v-if="category === 'advanced'">
-      <p>You can build way more advanced things with custom keys. Here are some resources you may use. For some of themy you might need to edit the kb.py file or enable a keyboard feature. When testing these check the output of the REPL for errors.
+      <p>You can build much more advanced behavior with custom keys. Here are some resources you can use. Some may require editing `kb.py` or enabling specific keyboard features. When testing, check the REPL output for errors.
       </p>
       <ul>
         <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/macros.md">Macros</a> KC.MACRO("send a string")</li>
         <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/keycodes.md">Keycodes</a> List of all keys</li>
         <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/layers.md">Layers</a> How layers work</li>
-        <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/combos.md">Combos</a> Multiple keys pressed simultaneously output a different key</li>
+        <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/combos.md">Combos</a> Pressing multiple keys simultaneously outputs a different key</li>
         <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/holdtap.md">Holdtap</a> Holding a key down for longer than a certain amount of time outputs a different key</li>
-        <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/combo_layers.md">Combo Layers</a> pressing 2 layer keys at once opens a different layer</li>
+        <li><a class="text-primary" href="https://github.com/KMKfw/kmk_firmware/blob/main/docs/en/combo_layers.md">Combo Layers</a> Pressing two layer-switch keys simultaneously activates a different layer</li>
       </ul>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { keyboardStore } from '../store'
 import Qwerty from './picker-layouts/Qwerty.vue'
 import Colemak from './picker-layouts/Colemak.vue'
@@ -240,6 +240,12 @@ import Dvorak from './picker-layouts/Dvorak.vue'
 const layout = ref('qwerty')
 const category = ref('basic')
 const emit = defineEmits(['setKey'])
+
+const props = defineProps<{
+  showSecondary?: boolean
+}>()
+
+const showSecondary = computed(() => props.showSecondary !== false)
 
 // set the currently selected key to keycode
 const setKey = (key: string | number) => {
