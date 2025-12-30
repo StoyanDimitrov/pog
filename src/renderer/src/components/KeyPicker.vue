@@ -143,7 +143,8 @@
         <div class="key" @click="setKey('KC.RELOAD')">Reload</div>
         <div class="key" @click="setKey('KC.BKDL')">BKDL</div>
         <div class="group">
-          <div class="key" @click="setKey('KC.HT(KC.A, KC.LCTL)')">HoldTap</div>
+          <div class="key" @click="setKey('KC.HT(KC.A, KC.LCTL)')" title="Requires 'holdtap' feature enabled">HoldTap</div>
+          <div class="key" @click="setKey('KC.SK(KC.LCTL)')" title="Requires 'oneshot' feature enabled">Sticky Keys</div>
         </div>
       </div>
     </div>

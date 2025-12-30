@@ -31,17 +31,18 @@ class POGKeyboard(KMKKeyboard):
             # sticky_keys = StickyKeys(release_after=5000)
             self.modules.append(sticky_keys)
 
-
         if "tapdance" in features:
             from kmk.modules.tapdance import TapDance
             self.tapdance = TapDance()
             self.modules.append(self.tapdance)
 
         if "holdtap" in features:
-            from kmk.modules.holdtap import HoldTap; self.modules.append(HoldTap())
+            from kmk.modules.holdtap import HoldTap
+            self.modules.append(HoldTap())
 
         if "mousekeys" in features:
-            from kmk.modules.mouse_keys import MouseKeys; self.modules.append(MouseKeys())
+            from kmk.modules.mouse_keys import MouseKeys
+            self.modules.append(MouseKeys())
 
         if "combos" in features:
             from kmk.modules.combos import Combos, Chord, Sequence
