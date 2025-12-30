@@ -311,8 +311,8 @@ export const renderLabel = (keycode: string) => {
     SM: { label: 'SM' },
 
     // Brightness
-    BRIU: { label: 'Play/Pause', icon: 'mdi-brightness-5' },
-    BRID: { label: 'Play/Pause', icon: 'mdi-brightness-4' },
+    BRIU: { label: 'Brightness +', icon: 'mdi-brightness-5' },
+    BRID: { label: 'Brightness -', icon: 'mdi-brightness-4' },
 
     // Media
     MPLY: { label: 'Play/Pause', icon: 'mdi-play-pause' },
